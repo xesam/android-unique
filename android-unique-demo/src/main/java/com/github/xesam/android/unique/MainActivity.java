@@ -18,12 +18,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         vTv = (TextView) findViewById(R.id.content);
         unique = new Unique(this);
-        findViewById(R.id.generate_unique_id).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         findViewById(R.id.get_unique_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

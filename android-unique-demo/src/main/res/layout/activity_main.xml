@@ -17,12 +17,6 @@
         android:text="Hello World!" />
 
     <Button
-        android:id="@+id/generate_unique_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="generate_unique_id" />
-
-    <Button
         android:id="@+id/get_unique_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
