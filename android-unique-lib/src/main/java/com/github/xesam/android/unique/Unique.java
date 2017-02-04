@@ -26,8 +26,9 @@ public class Unique {
 
     private final SharedPreferences mPref;
     private final String mSdFileName;
-
     private UniqueGenerator mUniqueGenerator;
+
+    private String mCachedId;
 
     public Unique(Context context) {
         this(context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE), SDCARD_FILE);
@@ -157,16 +158,22 @@ public class Unique {
 
     @NonNull
     public String getUniqueId() {
+        if (!TextUtils.isEmpty(mCachedId)) {
+            return mCachedId;
+        }
         String innerUnique = getInnerBackup();
         String externalUnique = getExternalBackup();
         if (mUniqueGenerator.verifyUniqueId(innerUnique)) {
             backupToExternal(innerUnique);
-            return innerUnique;
+            mCachedId = innerUnique;
         } else {
             if (mUniqueGenerator.verifyUniqueId(externalUnique)) {
                 backupToInner(externalUnique);
-                return externalUnique;
+                mCachedId = externalUnique;
             }
+        }
+        if (!TextUtils.isEmpty(mCachedId)) {
+            return mCachedId;
         }
         String newId = mUniqueGenerator.generateUniqueId();
         if (TextUtils.isEmpty(newId)) {
