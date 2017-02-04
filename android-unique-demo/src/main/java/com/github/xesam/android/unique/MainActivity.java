@@ -1,7 +1,9 @@
 package com.github.xesam.android.unique;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.github.xesam.android.unique.demo.R;
 
 public class MainActivity extends AppCompatActivity {
 
